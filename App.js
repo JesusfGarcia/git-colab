@@ -8,7 +8,8 @@ import { EliDelMal } from './views/eli';
 import { Viripineda } from './views/viripineda';
 import { FridaGeyne } from './views/FridaGeyne';
 import { Belendiaz } from './views/belendiaz';
-const arraytorender=[ <Pazanaya/>, <Miri/>, <Mayra/>, <Karyrodriguez/>, <EliDelMal/>, <Viripineda/>, <FridaGeyne/>, <Belendiaz/>];
+import { Victoriam } from './views/Victoria';
+const arraytorender=[ <Pazanaya/>, <Miri/>, <Mayra/>, <Karyrodriguez/>, <EliDelMal/>, <Viripineda/>, <FridaGeyne/>, <Belendiaz/>, <Victoria/>];
 
 export default function App() {
   return (
