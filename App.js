@@ -7,22 +7,22 @@ import { Karyrodriguez } from './views/karyrodriguez';
 import { EliDelMal } from './views/eli';
 import { Viripineda } from './views/viripineda';
 
-const arraytorender = [ < Pazanaya / > , < Miri / > , < Mayra / > , < Karyrodriguez / > , < EliDelMal / > , < Viripineda / > ]
+const arraytorender=[ <Pazanaya/>, <Miri/>, <Mayra/>, <Karyrodriguez/>, <EliDelMal/>, <Viripineda/>]
 
 export default function App() {
-    return ( <
-        View style = { styles.container } > { arraytorender.map(componente => componente) } <
-        StatusBar style = "auto" / >
-        <
-        /View>
-    );
+  return (
+    <View style={styles.container}>
+      {arraytorender.map(componente => componente)}
+      <StatusBar style="auto" />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
