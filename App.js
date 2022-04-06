@@ -6,8 +6,9 @@ import { Mayra } from './views/mayra';
 import { Karyrodriguez } from './views/karyrodriguez';
 import { EliDelMal } from './views/eli';
 import { Viripineda } from './views/viripineda';
+import { FridaGeyne } from './views/FridaGeyne';
 
-const arraytorender=[ <Pazanaya/>, <Miri/>, <Mayra/>, <Karyrodriguez/>, <EliDelMal/>, <Viripineda/>]
+const arraytorender=[ <Pazanaya/>, <Miri/>, <Mayra/>, <Karyrodriguez/>, <EliDelMal/>, <Viripineda/>, <FridaGeyne/>];
 
 export default function App() {
   return (
