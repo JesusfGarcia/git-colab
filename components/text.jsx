@@ -12,6 +12,7 @@ const styles= StyleSheet.create({
     text: {
         fontSize: 40,
         fontWeight: "bold",
+        color: "#000",
 
     }
 })

@@ -14,15 +14,19 @@ import {TouchableOpacity, StyleSheet, Text} from "react-native";
 
 const styles= StyleSheet.create({
     boton: {
-        backgroundColor: "#ffffff",
-        borderRadius: 10,
-        paddingVertical: 10,
-        paddingHorizontal: 15,
+        backgroundColor: "#000",
+        borderRadius: 15,
+        paddingVertical: 15,
+        paddingHorizontal: 45,
+        color: "#fff",
+        fontFamily: "Calibri",
+        fontSize: 20,
+        alignContent: "center"
     },
     
     Touchable: {
-        alignSelf: "flex-start"
-    }
+        alignSelf: "center",
+    },
 
 })
 

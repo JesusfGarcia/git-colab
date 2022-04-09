@@ -6,7 +6,7 @@ const MyTextInput= ({label = "", place = "", security = false, value = "", setVa
     
     return(
         <View>
-            <Text>
+            <Text style= {styles.textlabel}>
                 {label}
             </Text>
             <TextInput type="Text" placeholder={place} style={styles.textinput} secureTextEntry = {security} value={value} onChangeText={changeText}/>
@@ -16,9 +16,19 @@ const MyTextInput= ({label = "", place = "", security = false, value = "", setVa
 
 const styles= StyleSheet.create({
     textinput: {
-        fontSize: 16,
-        height: 40,
-        backgroundColor: "#D2B0D6",
+        fontSize: 13,
+        height: 50,
+        borderColor: "#000",
+        borderRadius: 5,
+        borderWidth: 0,
+        borderBottomWidth: 2,
+    },
+    textlabel: {
+        fontSize: 15,
+        fontFamily: "Calibri",
+        fontStyle: "bold",
+        
+
     }
 })
 
