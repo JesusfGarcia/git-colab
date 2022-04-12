@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, ActivityIndicator, Picker } from "react-native";
 import { Text, MyTextInput, MyBoton } from "./components";
 import { Pazanaya } from "./views/pazanaya";
 import { Miri } from "./views/miri/miri";
@@ -12,6 +12,10 @@ import { Belendiaz } from "./views/belendiaz";
 import { Victoriam } from "./views/Victoria";
 import { TextInput } from "react-native";
 import React from "react";
+import axios from "axios";
+import { ListaUsuarios } from "./views/listausuarios";
+import DropDownPicker from "react-native-dropdown-picker";
+import Icon from "react-native-vector-icons/FontAwesome"
 
 const arraytorender = [
   <Pazanaya />,
@@ -26,36 +30,79 @@ const arraytorender = [
 ];
 
 export default function App() {
-  const [Correo, setCorreo] = React.useState("")
-  const [Contraseña, setContraseña] = React.useState("")
-
-  const mostrarHolaMundo = () => alert("Hola mundo")
-
-  const mostrarHolaMundo2 = () => {
-    return alert("Hola mundo 2")
-  }
-
-  function mostrarHolaMundo3(){
-    return alert("Hola mundo 3")
-  }
+  const [Correo, setCorreo] = React.useState("");
+  const [Contraseña, setContraseña] = React.useState(""); //estados
+  const [Loading, setLoading] = React.useState(false);
+  const [TipoUsuario, setTipoUsuario] = React.useState("default");
+  const [OpenPicker, setOpenPicker] = React.useState(false);
+  const [PickerItems, setPickerItems] = React.useState([
+    {
+      label: "solicitante",
+      value: "solicitante",
+    },
+    {
+      label: "empleador",
+      value: "empleador",
+    },
+  ]);
 
   const enviarFormulario = () => {
-    if(Correo === ""){
-      return alert("Necesita llenar el campo del Correo")
-    }if(Contraseña === ""){
-      return alert("Necesita llenar el campo de Contraseña")
+    if (Correo === "") {
+      return alert("Necesita llenar el campo del Correo");
     }
-    return alert("El formulario se ha llenado de manera correcta")
-  }
+    if (Contraseña === "") {
+      return alert("Necesita llenar el campo de Contraseña");
+    }
+
+    enviarUsuario();
+  };
+
+  const enviarUsuario = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.post(
+        "https://mymoney15.herokuapp.com/api/v1/users",
+        { email: Correo, password: Contraseña }
+      );
+      console.log(response);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.error(error);
+    }
+  };
+
   return (
+    //<ListaUsuarios/>
 
     <View style={styles.container}>
-      <MyTextInput label="Correo electrónico" place="Ingresa tu Correo Electrónico" value = {Correo} setValue = {setCorreo}/>
-      <MyTextInput label="Contraseña" place="Ingresa tu Contraseña" security value = {Contraseña} setValue = {setContraseña}/>
+      <MyTextInput
+        label="Correo electrónico"
+        place="Ingresa tu Correo Electrónico"
+        value={Correo}
+        setValue={setCorreo}
+      />
+      <MyTextInput
+        label="Contraseña"
+        place="Ingresa tu Contraseña"
+        security
+        value={Contraseña}
+        setValue={setContraseña}
+      />
+      <DropDownPicker
+        open={OpenPicker}
+        value={TipoUsuario}
+        items={PickerItems}
+        setOpen={setOpenPicker}
+        setValue={setTipoUsuario}
+        setItems={setPickerItems}
+      />
       <View style={styles.miBotonContener}>
-        <MyBoton text="aceptar"  onPress={enviarFormulario}/>
-        <MyBoton text="aceptar2"  onPress={mostrarHolaMundo2}/>
-        <MyBoton text="aceptar3"  onPress={mostrarHolaMundo3}/>
+        {Loading ? (
+          <ActivityIndicator />
+        ) : (
+          <MyBoton text="aceptar" onPress={enviarFormulario} />
+        )}
       </View>
     </View>
   );
@@ -64,17 +111,17 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#337AFF",
+    backgroundColor: "#393C8F",
     flexDirection: "column",
-    padding: 10,
-    justifyContent: "space-evenly"
+    padding: 60,
+    justifyContent: "space-evenly",
   },
-  ingresaTexto:{
+  ingresaTexto: {
     height: 40,
-    borderColor: "#CF19E1"
+    borderColor: "#CF19E1",
   },
   miBotonContener: {
     flexDirection: "row",
     justifyContent: "space-between",
-  }
+  },
 });

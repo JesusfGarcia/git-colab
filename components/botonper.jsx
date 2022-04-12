@@ -14,10 +14,10 @@ import {TouchableOpacity, StyleSheet, Text} from "react-native";
 
 const styles= StyleSheet.create({
     boton: {
-        backgroundColor: "#ffffff",
+        backgroundColor: "#DE108D",
         borderRadius: 10,
         paddingVertical: 10,
-        paddingHorizontal: 15,
+        paddingHorizontal: 98,
     },
     
     Touchable: {
