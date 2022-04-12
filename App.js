@@ -32,7 +32,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>
-        INICIAR SESIÓN
+        REGISTRO DE USUARIO
       </Text>
 
       
