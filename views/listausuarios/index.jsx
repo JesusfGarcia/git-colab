@@ -13,7 +13,7 @@ const ListaUsuarios= () => {
 
     const TraerInformacion= async() =>{
         try {
-            const {data} = await axios.get("https://mymoney15.herokuapp.com/api/v1/users")
+            const {data} = await axios.get("https://my-money28.herokuapp.com/signup/")
             console.log(data)
             setLista(data)
             setLoading(false)
