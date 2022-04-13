@@ -1,9 +1,11 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View, Picker } from "react-native";
-import { Text, MyTextInput, MyBoton } from "./components";
+import { Text, MyTextInput, MyBoton } from "./proyecto/components";
 import { TextInput } from "react-native";
 import React from "react";
 import DropDownPicker from "react-native-dropdown-picker";
+import Navigator from "./proyecto/navigation";
+//import Registro from "./views/registro";
 
 export default function App() {
   const [Correo, setCorreo] = React.useState("");
@@ -31,10 +33,11 @@ export default function App() {
     return alert("El formulario se ha llenado de manera correcta");
   };
   return (
+
+    //<Navigator/>
+
     <View style={styles.container}>
-      <Text>
-        INICIAR SESIÓN
-      </Text>
+      <Text>INICIAR SESIÓN</Text>
       <MyTextInput
         label="Correo electrónico"
         place="Ingresa tu Correo Electrónico"
@@ -48,11 +51,18 @@ export default function App() {
         value={Contraseña}
         setValue={setContraseña}
       />
-      <DropDownPicker open = {OnePicker} value = {TipoUsuario} items = {PickerItems} setOpen = {setOnePicker} setValue = {setTipoUsuario} setItems = {setPickerItems} />
+      <DropDownPicker
+        open={OnePicker}
+        value={TipoUsuario}
+        items={PickerItems}
+        setOpen={setOnePicker}
+        setValue={setTipoUsuario}
+        setItems={setPickerItems}
+      />
       <View style={styles.miBotonContener}>
         <MyBoton text="aceptar" onPress={enviarFormulario} />
       </View>
-    </View>
+    </View> 
   );
 }
 
