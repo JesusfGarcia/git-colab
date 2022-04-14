@@ -10,6 +10,7 @@ import Navigator from "./proyecto/navigation";
 export default function App() {
   const [Correo, setCorreo] = React.useState("");
   const [Contraseña, setContraseña] = React.useState("");
+  const [ConfiContraseña, setConfiContraseña] = React.useState("");
   const [TipoUsuario, setTipoUsuario] = React.useState("default");
   const [OnePicker, setOnePicker] = React.useState(false);
   const [PickerItems, setPickerItems] = React.useState([
@@ -30,14 +31,20 @@ export default function App() {
     if (Contraseña === "") {
       return alert("Necesita llenar el campo de Contraseña");
     }
+    if (ConfiContraseña === "") {
+      return alert("Necesita llenar el campo de Confirmación de Contraseña");
+    }
+    if (ConfiContraseña != Contraseña) {
+      return alert("Las contraseñas no son iguales");
+    }else
     return alert("El formulario se ha llenado de manera correcta");
   };
   return (
 
-    //<Navigator/>
-
+    <Navigator/>
+/*
     <View style={styles.container}>
-      <Text>INICIAR SESIÓN</Text>
+      <Text>REGISTRO DE USUARIO</Text>
       <MyTextInput
         label="Correo electrónico"
         place="Ingresa tu Correo Electrónico"
@@ -51,6 +58,13 @@ export default function App() {
         value={Contraseña}
         setValue={setContraseña}
       />
+      <MyTextInput
+        label="ConfiContraseña"
+        place="Ingresa de nuevo tu contraseña"
+        security
+        value={ConfiContraseña}
+        setValue={setConfiContraseña}
+      />
       <DropDownPicker
         open={OnePicker}
         value={TipoUsuario}
@@ -60,9 +74,9 @@ export default function App() {
         setItems={setPickerItems}
       />
       <View style={styles.miBotonContener}>
-        <MyBoton text="aceptar" onPress={enviarFormulario} />
+        <MyBoton text="Registrarme" onPress={enviarFormulario} />
       </View>
-    </View> 
+    </View>  */
   );
 }
 
@@ -71,7 +85,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#393C8F",
     flexDirection: "column",
-    paddingHorizontal: 60,
+    paddingHorizontal: 10,
     justifyContent: "space-evenly",
   },
   miBotonContener: {
